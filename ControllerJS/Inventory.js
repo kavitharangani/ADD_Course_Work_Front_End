@@ -1,4 +1,37 @@
+const loadAllItemCode = () => {
+    $('#item_code').empty();
+    $('#item_code').append("<option selected>Select customer code</option>");
+
+    $.ajax({
+        url: "http://localhost:8080/shop/api/v1/item",
+        method: "GET",
+        processData: false,
+        contentType: false,
+        success: function (resp) {
+            console.log(resp);
+            for (const item of resp) {
+                let option = `<option data-name="${item.item_name}">${item.item_code}</option>;`
+                $("#item_code").append(option);
+            }
+        },
+        error: function (xhr, exception) {
+            console.log("Error loading item codes:", exception);
+        }
+    });
+}
+
+$('#item_code').change((e) => {
+    const item_code = e.target.value;
+    if ('Select item code' !== item_code) {
+        const name = e.target.options[e.target.selectedIndex].dataset.name;
+        // const qty = e.target.options[e.target.selectedIndex].dataset.qty;
+
+        $('#item_desc').val(name);
+        // $('#customer_qty').val(qty);
+    }
+})
 $(document).ready(function () {
+loadAllItemCode();
     function loadAllInventory() {
         $("#inventory-tbl-body").empty();
         $.ajax({
@@ -59,26 +92,29 @@ $(document).ready(function () {
     }
 
     $("#save_inventory").click(function () {
-        let formData = {
-            item_code: $("#item_code").val(),
-            item_desc: $("#item_desc").val(),
-            item_qty: $("#item_qty").val(),
-            item_pic: $("#item_pic").val(),
-            category: $("#category").val(),
-            size: $("#size").val(),
-            unit_price_sale: $("#unit_price_sale").val(),
-            unit_price_buy: $("#unit_price_buy").val(),
-            profit_margin: $("#profit_margin").val(),
-            status: $("#status").val()
-        };
+        let formData = new FormData();
+        formData.append("item_code", $("#item_code").val());
+        formData.append("item_desc", $("#item_desc").val());
+        formData.append("item_qty", $("#item_qty").val());
+        formData.append("category", $("#categorys").val());
+        formData.append("size", $("#size").val());
+        formData.append("unit_price_sale", $("#unit_price_sale").val());
+        formData.append("unit_price_buy", $("#unit_price_buy").val());
+        formData.append("expected_profit", $("#expected_profit").val());
+        formData.append("profit_margin", $("#profit_margin").val());
+        formData.append("status", $("#statuss").val());
+
+        let fileInput = document.getElementById('item_pic');
+        formData.append("item_pic", fileInput.files[0]);
 
         $.ajax({
             method: "POST",
             url: "http://localhost:8080/shop/api/v1/inventory",
-            contentType: "application/json",
-            data: JSON.stringify(formData),
+            processData: false, // Prevent jQuery from automatically processing data
+            contentType: false, // Prevent jQuery from automatically setting contentType
+            data: formData,
             success: function (data) {
-                reset();
+                reset(); // Assuming reset() function is defined elsewhere
                 alert("Item saved successfully.");
             },
             error: function (xhr, status, error) {
@@ -87,28 +123,35 @@ $(document).ready(function () {
         });
     });
 
+
     $("#update_inventory").click(function () {
-        let formData = {
-            item_code: $("#item_code").val(),
-            item_desc: $("#item_desc").val(),
-            item_qty: $("#item_qty").val(),
-            item_pic: $("#item_pic").val(),
-            category: $("#category").val(),
-            size: $("#size").val(),
-            unit_price_sale: $("#unit_price_sale").val(),
-            unit_price_buy: $("#unit_price_buy").val(),
-            expected_profit: $("#expected_profit").val(), // Add this line
-            profit_margin: $("#profit_margin").val(),
-            status: $("#status").val(), // Corrected ID
-        };
+        let formData = new FormData();
+        let item_code = $("#item_code").val();
+
+        formData.append("item_code", item_code);
+        formData.append("item_desc", $("#item_desc").val());
+        formData.append("item_qty", $("#item_qty").val());
+        formData.append("category", $("#categorys").val());
+        formData.append("size", $("#size").val());
+        formData.append("unit_price_sale", $("#unit_price_sale").val());
+        formData.append("unit_price_buy", $("#unit_price_buy").val());
+        formData.append("expected_profit", $("#expected_profit").val());
+        formData.append("profit_margin", $("#profit_margin").val());
+        formData.append("status", $("#statuss").val());
+
+        let fileInput = document.getElementById('item_pic');
+        if (fileInput.files.length > 0) {
+            formData.append("item_pic", fileInput.files[0]);
+        }
 
         $.ajax({
-            method: "PATCH",
-            url: "http://localhost:8080/shop/api/v1/inventory/" + formData.item_code,
-            contentType: "application/json",
-            data: JSON.stringify(formData),
+            method: "PATCH", // Use PATCH method for updating
+            url: "http://localhost:8080/shop/api/v1/inventory/" + item_code, // Include item code in URL
+            processData: false, // Prevent jQuery from automatically processing data
+            contentType: false, // Prevent jQuery from automatically setting contentType
+            data: formData,
             success: function (data) {
-                reset();
+                reset(); // Assuming reset() function is defined elsewhere
                 alert("Item updated successfully.");
             },
             error: function (xhr, status, error) {
@@ -116,6 +159,7 @@ $(document).ready(function () {
             }
         });
     });
+
 
 
     $("#reset_inventory").click(function () {

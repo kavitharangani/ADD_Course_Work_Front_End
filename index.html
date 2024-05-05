@@ -749,45 +749,57 @@
 
             <section id="employee_details">
                 <div class="mb-3">
-                    <label for="employeeId" class="form-label">Employee ID</label>
-                    <input id="employeeId" type="text" class="form-control" placeholder="Enter Customer Code..">
+                    <label for="emp_id" class="form-label">Employee ID</label>
+                    <input id="emp_id" type="text" class="form-control" placeholder="Enter Employee Code..">
                 </div>
 
                 <div class="mb-3">
-                    <label for="employeeName" class="form-label">Employee Name</label>
-                    <input id="employeeName" type="text" class="form-control"
+                    <label for="emp_name" class="form-label">Name</label>
+                    <input id="emp_name" type="text" class="form-control"
                            aria-describedby="emailHelp" placeholder="Enter Name..">
                 </div>
                 <div class="mb-3">
-                    <label for="employeeProfilePic" class="form-label">Employee Profile Picture</label>
-                    <input id="employeeProfilePic" type="file" class="form-control" aria-describedby="emailHelp" placeholder="mm/dd/yyyy">
+                    <label for="emp_pic" class="form-label">Employee Profile Picture</label>
+                    <input id="emp_pic" type="file" class="form-control" placeholder="Enter Your Picture..">
                 </div>
-
+                <div class="col-md-4">
+                    <label for="emp_gender" class="form-label">Gender</label>
+                    <select id="emp_gender" class="form-select">
+                        <option selected>Choose...</option>
+                        <option value="MALE">Male</option>
+                        <option value="FEMALE">Female</option>
+                        <option value="OTHER">Other</option>
+                    </select>
+                </div>
 
                 <div class="mb-3">
                     <label for="status" class="form-label">Status</label>
-                    <input id="status" type="text" class="form-control" aria-describedby="emailHelp" placeholder="Enter Status..">
+                    <input id="status" type="text" class="form-control"
+                           aria-describedby="emailHelp" placeholder="Enter Status..">
                 </div>
                 <div class="mb-3">
-                    <label for="designation" class="form-label">Designation</label>
-                    <input id="designation" type="text" class="form-control" aria-describedby="emailHelp" placeholder="Enter Designation..">
-                </div>
-                <div class="mb-3">
-                    <label for="employee_dob" class="form-label">Employee DOB</label>
-                    <input id="employee_dob" type="date" class="form-control"
-                           aria-describedby="emailHelp" placeholder="Enter Name..">
-                </div>
-                <div class="mb-3">
-                    <label for="employee_joinDate" class="form-label">Employee Join Date</label>
-                    <input id="employee_joinDate" type="date" class="form-control"
-                           aria-describedby="emailHelp" placeholder="Enter Name..">
-                </div>
-                <div class="mb-3">
-                    <label for="employee_attachedBranch" class="form-label">Employee Attached Branch</label>
-                    <input id="employee_attachedBranch" type="text" class="form-control"
-                           aria-describedby="emailHelp" placeholder="Enter Name..">
+                    <label for="designation" class="form-label">Designation </label>
+                    <input id="designation" type="text" class="form-control"
+                           aria-describedby="emailHelp" placeholder="Enter designation..">
                 </div>
 
+                <div class="col-md-4">
+                    <label for="emp_role" class="form-label">Role</label>
+                    <select id="emp_role" class="form-select">
+                        <option selected>Choose...</option>
+                        <option value="ADMIN">Admin</option>
+                        <option value="USER">User</option>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label for="emp_dob" class="form-label">Date Of Birth</label>
+                    <input id="emp_dob" type="date" class="form-control" aria-describedby="emailHelp" placeholder="mm/dd/yyyy">
+                </div>
+                <div class="mb-3">
+                    <label for="emp_joindate" class="form-label">Join Date</label>
+                    <input id="emp_joindate" type="date" class="form-control" aria-describedby="emailHelp" placeholder="mm/dd/yyyy">
+                </div>
             </section>
 
             <section id="employee_buttons">
@@ -805,77 +817,55 @@
     </section>
 
     <section>
-        <div class="form-check">
-            <input class="form-check-input" type="radio" name="flexRadioDefault" id="employee_flexRadioDefault1">
-            <label class="form-check-label" for="flexRadioDefault1">
-                Male
-            </label>
-        </div>
-        <div class="form-check">
-            <input class="form-check-input" type="radio" name="flexRadioDefault" id="employee_flexRadioDefault2" checked>
-            <label class="form-check-label" for="flexRadioDefault2">
-                Female
-            </label>
-        </div>
-        <div class="form-check">
-            <input class="form-check-input" type="radio" name="flexRadioDefault" id="employee_flexRadioDefault3" checked>
-            <label class="form-check-label" for="flexRadioDefault3">
-                Other
-            </label>
-        </div>
-        <br>
-        <div class="form-check">
-            <input class="form-check-input" type="radio" name="flexRadioDefault" id="employee_role1">
-            <label class="form-check-label" for="flexRadioDefault1">
-                User
-            </label>
-        </div>
-        <div class="form-check">
-            <input class="form-check-input" type="radio" name="flexRadioDefault" id="employee_role2" checked>
-            <label class="form-check-label" for="flexRadioDefault2">
-                Admin
-            </label>
-        </div>
-        <div class="form-check">
-            <input class="form-check-input" type="radio" name="flexRadioDefault" id="employee_role3" checked>
-            <label class="form-check-label" for="flexRadioDefault3">
-                Other
-            </label>
+
+        <div class="mb-3">
+            <label for="attachedBranch" class="form-label">Branch</label>
+            <input id="attachedBranch" type="text" class="form-control"
+                   aria-describedby="emailHelp" placeholder="Enter Branch..">
         </div>
         <div class="mb-3">
-            <label for="employee_ad1" class="form-label">Address 01</label>
-            <input id="employee_ad1" type="text" class="form-control"
+            <label for="employeeAddress1" class="form-label">Address 01</label>
+            <input id="employeeAddress1" type="text" class="form-control"
                    aria-describedby="emailHelp" placeholder="Enter Address..">
         </div>
         <div class="mb-3">
-            <label for="employee_ad2" class="form-label">Address 02</label>
-            <input id="employee_ad2" type="text" class="form-control"
+            <label for="employeeAddress2" class="form-label">Address 02</label>
+            <input id="employeeAddress2" type="text" class="form-control"
                    aria-describedby="emailHelp" placeholder="Enter Address..">
         </div>
         <div class="mb-3">
-            <label for="employee_ad3" class="form-label">Address 03</label>
-            <input id="employee_ad3" type="text" class="form-control"
+            <label for="employeeAddress3" class="form-label">Address 03</label>
+            <input id="employeeAddress3" type="text" class="form-control"
                    aria-describedby="emailHelp" placeholder="Enter Address..">
         </div>
         <div class="mb-3">
-            <label for="employee_ad4" class="form-label">Address 04</label>
-            <input id="employee_ad4" type="text" class="form-control"
+            <label for="employeeAddress4" class="form-label">Address 04</label>
+            <input id="employeeAddress4" type="text" class="form-control"
                    aria-describedby="emailHelp" placeholder="Enter Address..">
         </div>
         <div class="mb-3">
-            <label for="employee_ad5" class="form-label">Address 05</label>
-            <input id="employee_ad5" type="text" class="form-control"
+            <label for="employeeAddress5" class="form-label">Address 05</label>
+            <input id="employeeAddress5" type="text" class="form-control"
                    aria-describedby="emailHelp" placeholder="Enter Address..">
         </div>
+
         <div class="mb-3">
-            <label for="employee_emergencyContactNo" class="form-label">Address 05</label>
-            <input id="employee_emergencyContactNo" type="tel" class="form-control"
-                   aria-describedby="emailHelp" placeholder="Enter Address..">
+            <label for="contact" class="form-label">Contact No</label>
+            <input id="contact" type="text" class="form-control" aria-describedby="emailHelp" placeholder="Enter Contact Here...">
         </div>
         <div class="mb-3">
-            <label for="employee_email" class="form-label">Email</label>
-            <input id="employee_email" type="email" class="form-control"
-                   aria-describedby="emailHelp" placeholder="Enter Email..">
+            <label for="emp_email" class="form-label">Email</label>
+            <input id="emp_email" type="email" class="form-control" aria-describedby="emailHelp" placeholder="Enter Email Here...">
+        </div>
+        <div class="mb-3">
+            <label for="informInCaseOfEmergency" class="form-label">Emergency Case</label>
+            <input id="informInCaseOfEmergency" type="text" class="form-control"
+                   aria-describedby="emailHelp" placeholder="Enter Case..">
+        </div>
+        <div class="mb-3">
+            <label for="emergencyContactNo" class="form-label">Emergency Contact No</label>
+            <input id="emergencyContactNo" type="text" class="form-control"
+                   aria-describedby="emailHelp" placeholder="Enter Emergency Contact..">
         </div>
 
     </section>
@@ -888,7 +878,7 @@
             <tr>
                 <th scope="col">Id</th>
                 <th scope="col">Name</th>
-                <th scope="col">ProPic</th>
+                <th scope="col" width="50px">ProPic</th>
                 <th scope="col">gender</th>
                 <th scope="col">status</th>
                 <th scope="col">desig</th>
@@ -1164,20 +1154,26 @@
         <form id="inventory_form">
 
             <section id="inventory_details">
-                <div class="mb-3">
-                    <label for="item_code" class="form-label">Item Code</label>
-                    <input id="item_code" type="text" class="form-control" placeholder="Enter Supplier Code..">
+<!--                <div class="mb-3">-->
+<!--                    <label for="item_code" class="form-label">Item Code</label>-->
+<!--                    <input id="item_code" type="text" class="form-control" placeholder="Enter Supplier Code..">-->
+<!--                </div>-->
+                <div class="form-group">
+                    <label for="item_code">Item Code</label>
+                    <select class="form-control" id="item_code"  placeholder="Enter Inventory Code..">
+                    </select>
                 </div>
 
+                </div>
                 <div class="mb-3">
                     <label for="item_desc" class="form-label">Item Desc</label>
                     <input id="item_desc" type="text" class="form-control"
-                           aria-describedby="emailHelp" placeholder="Enter Name..">
+                           aria-describedby="emailHelp" placeholder="Enter Name.." readonly>
                 </div>
                 <div class="mb-3">
                     <label for="item_qty" class="form-label">Item Qty </label>
                     <input id="item_qty" type="number" class="form-control"
-                           aria-describedby="emailHelp" >
+                           aria-describedby="emailHelp"placeholder="Enter Qty.." >
                 </div>
                 <div class="mb-3">
                     <label for="item_pic" class="form-label">Item Pic</label>
